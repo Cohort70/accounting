@@ -1,6 +1,10 @@
 import {useState} from "react";
 
-const EditProfile = () => {
+interface EditProfileProps {
+    close: () => void;
+}
+
+const EditProfile = ({close}: EditProfileProps) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
 
@@ -10,13 +14,9 @@ const EditProfile = () => {
     }
 
     const handleClickSave = () => {
-        // TODO save edited profile and close component
+        // TODO save edited profile
         alert("Profile saved");
-    }
-
-    const handleClickClose = () => {
-        // TODO close component EditProfile without saving changes
-        alert("EditProfile closed");
+        close();
     }
 
     return (
@@ -36,7 +36,7 @@ const EditProfile = () => {
                 />
             </label>
             <button onClick={handleClickSave}>Save and Close</button>
-            <button onClick={handleClickClose}>Close without Save</button>
+            <button onClick={close}>Close without Save</button>
             <button onClick={handleClickClear}>Clear</button>
         </>
     )
