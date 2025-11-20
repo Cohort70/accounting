@@ -5,7 +5,7 @@ import {Navigate, Route, Routes} from "react-router";
 
 function App() {
     // TODO get token from global state
-    const token = '';
+    const token = 'dytio';
 
     return (
         <Routes>
