@@ -20,7 +20,7 @@ const ChangePassword = ({close}: ChangePasswordProps) => {
 
     const handleClickSave = () => {
         if (newPassword === confirmPassword) {
-            dispatch(changePassword(newPassword));
+            dispatch(changePassword({newPassword, oldPassword}));
             close();
         } else {
             alert("Passwords do not match");
