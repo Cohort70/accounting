@@ -1,4 +1,6 @@
 import {useState} from "react";
+import {useAppDispatch} from "../../app/hooks.ts";
+import {updateUser} from "../../features/api/accountApi.ts";
 
 interface EditProfileProps {
     close: () => void;
@@ -7,6 +9,7 @@ interface EditProfileProps {
 const EditProfile = ({close}: EditProfileProps) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const dispatch = useAppDispatch();
 
     const handleClickClear = () => {
         setFirstName("");
@@ -14,8 +17,7 @@ const EditProfile = ({close}: EditProfileProps) => {
     }
 
     const handleClickSave = () => {
-        // TODO save edited profile
-        alert("Profile saved");
+        dispatch(updateUser({firstName, lastName}));
         close();
     }
 

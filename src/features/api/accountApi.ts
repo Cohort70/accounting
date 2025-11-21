@@ -56,7 +56,7 @@ type UserUpdate = Omit<UserData, 'login'>;
 export const updateUser = createAsyncThunk<UserProfile, UserUpdate, { state: RootState }>(
     'user/update',
     async (user, {getState}) => {
-        const response = await fetch(`${base_url}/account/user`, {
+        const response = await fetch(`${base_url}/account/user/${getState().user.login}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
