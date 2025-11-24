@@ -1,13 +1,14 @@
 import {configureStore} from "@reduxjs/toolkit";
-import user from "../features/user/userSlice";
-import token from "../features/token/tokenSlice";
-import type {UserProfile} from "../utils/types";
+import token from "../features/token/tokenSlice.ts";
+import {accountApi} from "../features/api/accountApi.ts";
 
 export const store = configureStore({
     reducer: {
-        user, token
+        token,
+        [accountApi.reducerPath]: accountApi.reducer,
     },
-    preloadedState: JSON.parse(localStorage.getItem('state') || '{}') as {user: UserProfile, token: string}
+    preloadedState: JSON.parse(localStorage.getItem('state') || '{}') as {token: string},
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(accountApi.middleware)
 })
 
 store.subscribe(() => localStorage.setItem('state', JSON.stringify(store.getState())));
