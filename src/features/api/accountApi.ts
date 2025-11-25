@@ -44,8 +44,7 @@ export const accountApi = createApi({
                     Authorization: token
                 },
                 body: {password: newPassword}
-            }),
-            invalidatesTags: ['profile']
+            })
         })
     })
 })
