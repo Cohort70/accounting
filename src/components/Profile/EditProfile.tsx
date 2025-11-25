@@ -21,7 +21,7 @@ const EditProfile = ({close}: EditProfileProps) => {
 
     const handleClickSave = async () => {
         try {
-            await updateUser({userData: {firstName, lastName}, token, login: data!.login});
+            await updateUser({userData: {firstName, lastName}, login: data!.login});
         } catch (e) {
             console.log('update profile error', e)
         }
